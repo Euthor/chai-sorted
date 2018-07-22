@@ -44,7 +44,7 @@ Test for ascending sort order of array
 ```javascript
 expect(["a","b"]).to.be.sorted()
 // or
-expect(["a","b"]).to.be.sorted({descending: false}) 
+expect(["a","b"]).to.be.sorted({descending: false})
 ```
 
 Test for descending sort order of array
@@ -78,6 +78,15 @@ Test for ascending sort order of array by `name` attribute
 expect([{id:2,name:"apple"},{id:3,name:"bat"}]).to.be.ascendingBy("name")
 ```
 
+or:
+
+```javascript
+// ignore case
+expect([{id:2,name:"bat"},{id:3,name:"Apples"}]).to.be.descendingBy("name", {
+  ignoreCase: true
+})
+```
+
 ### `.descendingBy` method
 Alternate of `sortedBy` but does not require passing `true` as a second parameter to `sortedBy`. It is the same as doing `sortBy("name",true)`
 
@@ -85,6 +94,14 @@ Test for descending sort order of array by `name` attribute
 
 ```javascript
 expect([{id:2,name:"bat"},{id:3,name:"apples"}]).to.be.descendingBy("name")
+```
+or:
+
+```javascript
+// ignore case
+expect([{id:2,name:"bat"},{id:3,name:"Apples"}]).to.be.descendingBy("name", {
+  ignoreCase: true
+})
 ```
 
 ### `ascending` property

@@ -121,6 +121,18 @@ describe('to.be.descendingBy(property)', function () {
   })
 })
 
+describe('to.be.descendingBy(property, { ignoreCase: true })', function () {
+  it('key id of numbers', function () {
+    expect([{id: 3}, {id: 2}, {id: 1}]).to.be.descendingBy('id', {ignoreCase: true})
+  })
+  it('key id of strings', function () {
+    expect([{id: 'c'}, {id: 'B'}, {id: 'A'}]).to.be.descendingBy('id', {ignoreCase: true})
+  })
+  it('key name of mixed-case words and letters', function () {
+    expect([{id: 1, name: 'Cat'}, {id: 34, name: 'c'}, {id: 3, name: 'Boy'}, {size: 'large', name: 'b'}]).to.be.descendingBy('name', {ignoreCase: true})
+  })
+})
+
 describe('to.be.ascendingBy(property)', function () {
   it('key id of numbers', function () {
     expect([{id: 1}, {id: 2}, {id: 3}]).to.be.ascendingBy('id')
@@ -130,5 +142,17 @@ describe('to.be.ascendingBy(property)', function () {
   })
   it('key name of words and letters', function () {
     expect([{id: 1, name: 'a'}, {id: 34, name: 'boy'}, {id: 3, name: 'c'}, {size: 'large', name: 'cat'}]).to.be.ascendingBy('name')
+  })
+})
+
+describe('to.be.ascendingBy(property, { ignoreCase: true })', function () {
+  it('key id of numbers', function () {
+    expect([{id: 1}, {id: 2}, {id: 3}]).to.be.ascendingBy('id', {ignoreCase: true})
+  })
+  it('key id of different case strings', function () {
+    expect([{id: 'a'}, {id: 'B'}, {id: 'c'}]).to.be.ascendingBy('id', {ignoreCase: true})
+  })
+  it('key name of mixed-case words and letters', function () {
+    expect([{id: 1, name: 'A'}, {id: 34, name: 'boy'}, {id: 3, name: 'cAt'}, {size: 'large', name: 'cat'}]).to.be.ascendingBy('name', {ignoreCase: true})
   })
 })
